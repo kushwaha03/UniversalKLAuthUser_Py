@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block head_title %}
+    Verify || {{ block.super }}
+{% endblock head_title %}
+{% block content %}
+{% load material_form %}
+<div class="row">
+    <div class="container ">
+        <div class="col s10 m6 offset-s1 offset-m3">
+            <div class="card">
+                <div class="row"></div>
+                <div class="card-title center  ">
+                    <div class="row  ">
+                        <p>Verify Account</p>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <form action='{% url "kluseraccounts:Activate" %}' method="post">
+                    {% csrf_token %}
+                    <div class="card-content">
+                        {% form form=form layout=form.layout  %}
+                        {% endform %}
+
+                    </div>
+                    <div class="card-action">
+                        <div class="row center">
+                            <div>
+                                <button class="btn waves-effect waves-light" type="submit" value="login" >Activate<i class="material-icons right">send</i></button> 
+                                <input type="hidden" name="next" value="{{ next }}" />
+                                <a id='sendMail' class="btn waves-effect waves-light">Resend OTP</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %} 
+{% block additional_js %}
+<script type="text/javascript">
+$('#sendMail').on('click',function sendMail(event) {
+    event.preventDefault();
+    var status = $.get("{% url 'kluseraccounts:sendMail' %}");
+    status.done(function get_data(response) {
+        M.toast({html: 'Confirmation Mail has been sent to '+ response})
+    });
+
+});
+</script>
+{% endblock additional_js %}

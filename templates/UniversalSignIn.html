@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block head_title %}
+    SignIn || {{ block.super }}
+{% endblock head_title %}
+{% block content %}
+{% load material_form %}
+<div class="row">
+    <div class="container ">
+        <div class="col s10 m6 offset-s1 offset-m3">
+            <div class="card">
+                <div class="row"></div>
+                <div class="card-title center  ">
+                    <div class="row  ">
+                        <p>User Login</p>
+                       
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="card-content">
+                        {% form form=form layout=form.layout  %} 
+                        {% part form.email errors %}{% endpart %}
+                        {% part form.password errors %}{% endpart %}
+                        {% endform %}
+
+                    </div>
+                    <div class="card-action">
+                        <div class="row center">
+                            <div>
+                                <button class="btn waves-effect waves-light" type="submit" value="login" >Login<i class="material-icons right">send</i></button> 
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %} 
+{% block additional_js %}
+<script type="text/javascript">
+$("#password").on("focusout", function(e) {
+    if ($(this).val() != $("#passwordConfirm").val()) {
+        $("#passwordConfirm").removeClass("valid").addClass("invalid");
+    } else {
+        $("#passwordConfirm").removeClass("invalid").addClass("valid");
+    }
+});
+
+$("#passwordConfirm").on("keyup", function(e) {
+    if ($("#password").val() != $(this).val()) {
+        $(this).removeClass("valid").addClass("invalid");
+    } else {
+        $(this).removeClass("invalid").addClass("valid");
+    }
+});
+</script>
+{% endblock additional_js %}

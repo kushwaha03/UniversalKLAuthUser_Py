@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> {% block head_title %} Karmaa Lab {% endblock head_title %}</title>
+    {% include 'material/includes/material_css.html' %}
+    <style type="text/css">
+
+    .pin-top {
+        position: relative;
+    }
+
+    .pin-bottom {
+        position: relative;
+    }
+
+    .CardColor {
+        background-color: #22466d !important;
+    }
+
+    .pinned {
+        position: fixed !important;
+    }
+
+    .justify-text {
+        text-align: justify;
+    }
+
+    #MainNav {
+        background-color: #22466d !important;
+        z-index: 10000;
+    }
+
+    .btn {
+        background-color: #22466d !important;
+    }
+
+    #LearnNetLogo {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 15px;
+    }
+    </style>
+    {% block additional_css %} {% endblock additional_css %}
+</head>
+
+<body>
+    {% load staticfiles %}
+    <div id="nav-header">
+        {% include 'snippets/navbar-only.html' %}
+    </div>
+    <div id="main">
+        {% block content %} {% endblock content %}
+    </div>
+    <script src="{% static 'material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
+    <script src="{% static 'like/like.js' %}"></script>
+    
+    <script type="text/javascript">
+    $('.tooltipped').tooltip();
+    $('.collapsible').collapsible();
+    $('.dropdown-trigger').dropdown();
+    $('select').material_select();
+    </script>
+    {% block additional_js %} {% endblock additional_js %}
+</body>
+
+</html>

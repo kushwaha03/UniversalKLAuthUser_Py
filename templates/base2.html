@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> {% block head_title %}
+	    LearnNet
+	{% endblock head_title %}</title>
+	{% include 'material/includes/material_css.html' %}
+</head>
+<body>
+	{% include 'snippets/nav.html' %}
+{% block content %}
+    
+{% endblock content %}
+
+
+{% include 'material/includes/material_js.html' %}
+{% block additional_js %}
+    
+{% endblock additional_js %}
+</body>
+</html>

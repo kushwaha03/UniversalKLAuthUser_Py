@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block head_title %}
+    Home || {{ block.super }}
+{% endblock head_title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s12 m12 l12 xl12">
+            <h2 class="center">About</h2>
+            <p class="center" id="content">Great Scott! (he takes off after her) Git! (follows Doc) Hah! (Doc catches up with the woman and motions for her to jump onto his horse.) Jump! (The woman gets off the wagon just in time. The horses make a sudden turn and the wagon falls into the Ravine.)</p>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="row">
+        <div class="col s12 m6 l6 xl6 center">
+            <h3 class="center">Sigma</h3>
+            <a href="{% url 'kluseraccounts:dashboard' %}" class="btn waves-effect waves-light">Get Started</a>
+        </div>
+        <div class="col s12 m6 l6 xl6 center">
+            
+        </div>
+    </div>
+{% endblock content %}
